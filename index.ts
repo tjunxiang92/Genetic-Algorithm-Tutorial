@@ -4,11 +4,18 @@ import {Individual} from './individual';
 import {Canvas} from './draw';
 
 let canvas = new Canvas("myCanvas");
-canvas.drawIndividuals(10);
 
-let indiv = new Individual();
+function loop() {
+  canvas.clear();
+  canvas.drawIndividuals(10);
+  let indiv = new Individual();
+  canvas.drawSeq(indiv.seq);
+  canvas.drawText("Distance: " + indiv.calcDist(canvas));
+  
+  setTimeout(() => loop(), 1000);
+}
 
-console.log("Distance", indiv.calcDist(canvas));
-canvas.drawSeq(indiv.seq);
+loop();
 
-console.log(JSON.stringify(canvas.images));
+
+// console.log(JSON.stringify(canvas.images));

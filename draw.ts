@@ -9,6 +9,10 @@ export class Canvas {
     this.ctx = this.canvas.getContext('2d');
   }
 
+  clear() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
   getRandom(min, max) {
     return Math.random() * (max - min) + min;
   }
@@ -30,6 +34,11 @@ export class Canvas {
     for (let i = 0; i < 9; i++) {
       this.drawLine(seq[i], seq[i + 1]);
     }
+  }
+
+  drawText(text: string) {
+    this.ctx.font = "18px Arial";
+    this.ctx.fillText(text, 10, 30);
   }
 
   drawPlaceholder(i: number) {
